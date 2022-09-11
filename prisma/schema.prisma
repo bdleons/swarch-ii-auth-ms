@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id                   Int      @id @default(autoincrement())
+    name                 String
+    surname              String
+    username             String   @unique(map: "username_unique_constraint")
+    password             String
+    birthDate            DateTime
+    role                 String
+    nationality          String
+    address              String
+    city                 String
+    level                Int
+    bloodType            String
+    ethnicity            String
+    militarySituation    String
+    identificationType   String
+    identificationNumber BigInt   @unique(map: "identificationNumber_User_unique_constraint")
+}
+
+model Attendant {
+    id                   Int    @id @default(autoincrement())
+    name                 String
+    surname              String
+    identificationType   String
+    identificationNumber BigInt @unique(map: "identificationNumber_Attendant_unique_constraint")
+}
