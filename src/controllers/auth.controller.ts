@@ -17,7 +17,7 @@ router.post("/signUp", async(req: Request, res:Response, next:NextFunction) => {
 
         const user = await createUser(body);
 
-        res.sendStatus(201);
+        res.status(201).json({message: "User Created"});
 
     }catch(err){
         next(err);
